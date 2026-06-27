@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- atemplate for every single html file-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TodoApp</title>
+        <link rel="stylesheet" href="{{url_for('static', path='/css/base.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', path='/css/bootstrap.css')}}">
+
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+<!--block content, tells jinja that here we want the content of different file to fill in -->
+{% block content %}
+
+{% endblock %}
+
+
+<script src="{{url_for('static', path='/js/jquery-slim.js')}}"></script>
+<script src="{{url_for('static', path='/js/popper.js')}}"></script>
+<script src="{{url_for('static', path='/js/bootstrap.js')}}"></script>
+<script src="{{url_for('static', path='/js/base.js')}}" defer></script>  <!-- differ means laod it last, because it checks ids? -->
+
+
+</body>
+</html>

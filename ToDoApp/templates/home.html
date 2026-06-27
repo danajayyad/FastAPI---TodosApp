@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TodoApp</title>
+<!--    The browser requests:
+GET /
+FastAPI executes:
+return templates.TemplateResponse(...)
+Jinja starts rendering home.html.
+Jinja encounters:
+{{ url_for('static', path='css/base.css') }}
+Jinja asks FastAPI:
+
+"What is the URL for the route named static?"
+
+FastAPI finds:
+app.mount(
+    "/static",
+    StaticFiles(directory="ToDoApp/static"),
+    name="static"
+)
+
+and returns:
+
+/static/css/base.css
+Jinja inserts that URL into the HTML:
+<link rel="stylesheet" href="/static/css/base.css">
+The browser receives the HTML.
+The browser sees the stylesheet URL and sends:
+GET /static/css/base.css
+FastAPI matches the mounted route:
+app.mount("/static", ...)
+Instead of looking for a route function, FastAPI forwards the request to the StaticFiles handler.
+StaticFiles removes the /static prefix:
+/static/css/base.css
+        ↓
+css/base.css
+StaticFiles combines that with:
+ToDoApp/static
+
+to get:
+
+ToDoApp/static/css/base.css
+The file contents are read and returned to the browser.
+The browser applies the CSS to the page.-->
+    <link rel="stylesheet" href="{{url_for('static', path='/css/base.css')}}">
+</head>
+
+<body>
+<h1>
+    Welcome to this fastapi Course!
+</h1>
+
+</body>
+</html>
