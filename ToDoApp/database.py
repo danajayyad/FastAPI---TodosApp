@@ -10,13 +10,28 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 #create a location of the database in our fastapi app, inside the directory that im currently in
-SQLALCHEMY_DATABASE_URL = 'sqlite:///./todosapp.db'
+# SQLALCHEMY_DATABASE_URL = 'sqlite:///./todosapp.db'
 # SQLALCHEMY_DATABASE_URL= 'postgresql://postgres:1234@localhost/TodoApplicationDatabase'
 # db type, username, password, host(server), database name
 # port is by default:localhost:5432
 
+
 # SQLALCHEMY_DATABASE_URL='mysql+pymysql://root:root@127.0.0.1:3306/TodoApplicationDatabase'
 
+import os
+
+SQLALCHEMY_DATABASE_URL = os.getenv(
+    "DATABASE_URL",  # for render , there will be a .env
+    "sqlite:///./todosapp.db" # locally
+)
+
+# Handle older postgres:// URLs if necessary
+if SQLALCHEMY_DATABASE_URL.startswith("postgres://"):
+    SQLALCHEMY_DATABASE_URL = SQLALCHEMY_DATABASE_URL.replace(
+        "postgres://",
+        "postgresql://",
+        1,
+    )
 
 # db engine used to open a connection and use the db
 # engine is created once globally when the app starts.
