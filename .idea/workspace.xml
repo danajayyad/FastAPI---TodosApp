@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7684d9d-6085-41b5-99fc-385e6c455e6d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +23,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/ToDoApp" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -37,12 +39,13 @@
     "Python.books.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/pc/Documents/Personal/Python/Python/Udemy Course --FastAPI - The Complete Course 2026 (Beginner + Advanced)"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pc\Documents\Personal\Python\Python\Udemy Course --FastAPI - The Complete Course 2026 (Beginner + Advanced)\ToDoApp" />
       <recent name="C:\Users\pc\Documents\Personal\Python\Python\Udemy Course --FastAPI - The Complete Course 2026 (Beginner + Advanced)\ToDoApp\static\js" />
       <recent name="C:\Users\pc\Documents\Personal\Python\Python\Udemy Course --FastAPI - The Complete Course 2026 (Beginner + Advanced)\ToDoApp\static\css" />
       <recent name="C:\Users\pc\Documents\Personal\Python\Python\Udemy Course --FastAPI - The Complete Course 2026 (Beginner + Advanced)" />
