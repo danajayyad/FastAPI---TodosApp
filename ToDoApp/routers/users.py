@@ -35,24 +35,28 @@ class UserVerification(BaseModel):
     new_password: str = Field(min_length=4)
 
 
-@router.get('/change-password')
-async def change_password_page(
-    request: Request,
-    user: user_dependency
-):
-    if user is None:
+@router.get("/change-password")
+async def change_password_page(request: Request):
+
+    try:
+        user = await get_current_user(request.cookies.get("access_token"))
+
+        if user is None:
+            return RedirectResponse(
+                url="/auth/login-page",
+                status_code=status.HTTP_302_FOUND
+            )
+
+        return templates.TemplateResponse(
+            name="change-password.html",
+            request=request,
+            context={ "user": user}
+        )
+    except:
         return RedirectResponse(
             url="/auth/login-page",
             status_code=status.HTTP_302_FOUND
         )
-
-    return templates.TemplateResponse(
-        name="change-password.html",
-        request=request, context={
-            "user": user
-        }
-    )
-
 
 
 @router.get('/', status_code=status.HTTP_200_OK)
