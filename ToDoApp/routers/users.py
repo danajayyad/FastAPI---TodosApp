@@ -36,11 +36,21 @@ class UserVerification(BaseModel):
 
 
 @router.get('/change-password')
-def change_password_page(request:Request):
+async def change_password_page(
+    request: Request,
+    user: user_dependency
+):
+    if user is None:
+        return RedirectResponse(
+            url="/auth/login-page",
+            status_code=status.HTTP_302_FOUND
+        )
+
     return templates.TemplateResponse(
         name="change-password.html",
-        request=request,
-
+        request=request, context={
+            "user": user
+        }
     )
 
 
