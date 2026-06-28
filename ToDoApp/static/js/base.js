@@ -252,3 +252,51 @@
         // Redirect to the login page
         window.location.href = '/auth/login-page';
     };
+
+
+// Change Password JS
+const changePasswordForm = document.getElementById('changePasswordForm');
+
+if (changePasswordForm) {
+    changePasswordForm.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        const payload = {
+            password: data.password,
+            new_password: data.new_password
+        };
+
+        try {
+            const token = getCookie('access_token');
+
+            if (!token) {
+                throw new Error('Authentication token not found');
+            }
+
+            const response = await fetch('/user/password', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                alert('Password changed successfully!');
+                form.reset();
+                window.location.href = '/todos/todo-page';
+            } else {
+                const errorData = await response.json();
+                alert(`Error: ${errorData.detail}`);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        }
+    });
+}

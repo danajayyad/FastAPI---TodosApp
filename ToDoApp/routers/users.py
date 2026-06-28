@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, Path
+from fastapi import APIRouter, Depends, HTTPException, Request, Path
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 from typing import Annotated
@@ -7,7 +7,10 @@ from ..models import Todos, Users
 from ..database import SessionLocal
 from .auth import get_current_user #. = current package (routers folder)
 from passlib.context import CryptContext
+from starlette.responses import RedirectResponse
+from fastapi.templating import Jinja2Templates
 
+templates = Jinja2Templates(directory='ToDoApp/templates')
 
 router = APIRouter(
     prefix='/user',
@@ -31,6 +34,14 @@ class UserVerification(BaseModel):
     password: str
     new_password: str = Field(min_length=4)
 
+
+@router.get('/change-password')
+def change_password_page(request:Request):
+    return templates.TemplateResponse(
+        name="change-password.html",
+        request=request,
+
+    )
 
 
 

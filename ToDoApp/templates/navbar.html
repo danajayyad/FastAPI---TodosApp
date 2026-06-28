@@ -15,6 +15,11 @@
             <ul class="navbar-nav ml-auto">
                 {% if user %}
                 <li class="nav-item m-1">
+                    <a href="/user/change-password" class="btn btn-outline-light text-white">
+                        Change Password
+                    </a>
+                </li>
+                <li class="nav-item m-1">
                     <a class="btn btn-outline-light text-white" type="button" onclick="logout()">Logout</a>
                 </li>
                 {% endif %}
