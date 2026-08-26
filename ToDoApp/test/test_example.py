@@ -1,5 +1,5 @@
 import pytest
-# assert if used to validating some data against other
+# assert is used to validate some data against other
 #  test only passes if all asserts passed, both are under one test
 def test_equal_or_not_equal():
     assert 3 == 3
@@ -47,7 +47,7 @@ class Student:
 
 
 def test_person_intialization():
-    p = Student('John' , 'Doe' , 'Computer Science', 3) # instantiating new object everytime for each test that needs a student ->>> solved by pytest fixtures
+    p = Student('John' , 'Doe' , 'Computer Science', 3)
     assert p.first_name == 'John' , 'First Name should be John' # message is optional to inform other developers
     assert p.last_name == 'Doe'
     assert p.major == 'Computer Science'
@@ -61,7 +61,7 @@ def default_employee():
 
 # passing dependency to the test , the dependency is injected automatically --->> Give the test some object/data/service that it needs, instead of creating it inside the test."
 def test_person_intialization_with_fixture(default_employee):
-    assert default_employee.first_name == 'John' , 'First Name should be John' # message is optional to inform other developers
+    assert default_employee.first_name == 'John' , 'First Name should be John'
     assert default_employee.last_name == 'Doe'
     assert default_employee.major == 'Computer Science'
     assert default_employee.years == 3

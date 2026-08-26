@@ -1,6 +1,6 @@
 from starlette import status
 from .utils import *
-from ..routers.admin import get_db , get_current_user # we should import it to override the specific one that is in the file that has the routes we are testing
+from ..routers.admin import get_db , get_current_user 
 
 
 app.dependency_overrides[get_db] = override_get_db

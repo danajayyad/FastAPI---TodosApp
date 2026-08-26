@@ -5,7 +5,7 @@ from typing import Annotated
 from starlette import status
 from ..models import Todos # ..  means 2 files out
 from ..database import SessionLocal
-from .auth import get_current_user #. = current package (routers folder)
+from .auth import get_current_user 
 
 router = APIRouter(
     prefix='/admin',
@@ -17,23 +17,12 @@ def get_db():
     db = SessionLocal() # create a new database session (connection handler)
     try:
         yield db # pass the session to the api
-    finally: # executed after the response is delivered (this makes the fastapi faster because we can fetch the db, send to the client and then close the connection)
+    finally: # executed after the response is delivered
         db.close()
 
 
 db_dependency = Annotated[Session, Depends(get_db)] # dependency is stored (Not an actual session)
 user_dependency = Annotated[dict, Depends(get_current_user)]
-
-'''
-Anyone can still send requests to: /admin/todo
-A normal user could manually call:
-GET /admin/todo Authorization: Bearer normal_user_token
-If you DID NOT check role: user.get('user_role') != 'admin'
-then the normal user would successfully access: all todos,  admin data
-Huge security problem.
-So this check is the REAL protection
-if user is None or user.get('user_role') != 'admin':
-'''
 
 
 @router.get('/todo', status_code=status.HTTP_200_OK)

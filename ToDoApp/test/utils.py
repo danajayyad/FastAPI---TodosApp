@@ -5,7 +5,7 @@ from sqlalchemy import create_engine, text
 from fastapi.testclient import TestClient
 import pytest
 from ..main import app
-from ..models import Todos, Users # the todos model we want to create an instance from
+from ..models import Todos, Users 
 from ..routers.auth import bcrypt_context
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./testdb.db"

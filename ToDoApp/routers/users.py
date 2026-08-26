@@ -82,7 +82,6 @@ async def change_password(user: user_dependency, db: db_dependency, user_verific
     db.commit()
 
 
-# better be a request body and a pydantic checks on it
 @router.put('/phonenumber/{phone_number}', status_code=status.HTTP_204_NO_CONTENT)
 async def change_phone_number(user: user_dependency, db: db_dependency, phone_number: str):
     if user is None:

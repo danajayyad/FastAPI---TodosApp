@@ -21,9 +21,8 @@ class Users(Base):
 
 
 class Todos(Base):
-    __tablename__ = 'todos' # name od the table in the database
-
-    id = Column(Integer, primary_key=True, index=True) # index is to increase performance. Because the id is unique , sqlalchemy will automatically give it a value and will increment
+    __tablename__ = 'todos'
+    id = Column(Integer, primary_key=True, index=True) # index is to increase performance.
     title = Column(String)
     description = Column(String)
     priority = Column(String)
