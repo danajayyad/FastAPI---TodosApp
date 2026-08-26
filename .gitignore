@@ -1,0 +1,6 @@
+/fastapienv/
+__pycache__/
+.env
+todosapp.db
+.pytest_cache/
+.vscode/
